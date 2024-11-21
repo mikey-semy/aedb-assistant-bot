@@ -38,8 +38,8 @@ for filename in os.listdir(data_directory):
 # Создание типа векторного поискового индекса
 index_type = VectorSearchIndexType(
     chunking_strategy=StaticIndexChunkingStrategy(
-        max_chunk_size_tokens=1000,
-        chunk_overlap_tokens=200
+        max_chunk_size_tokens=500,#1000,
+        chunk_overlap_tokens=100,#200
     ),
     doc_embedder_uri=f"emb://{FOLDER_ID}/text-search-doc/rc",
     query_embedder_uri=f"emb://{FOLDER_ID}/text-search-query/rc"
