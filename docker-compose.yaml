@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  aedb-assistant-bot:
+    build: .
+    ports:
+      - "5064:5000"
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
