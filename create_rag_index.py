@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from loguru import logger
 from yandex_cloud_ml_sdk import YCloudML
 from yandex_cloud_ml_sdk.search_indexes import VectorSearchIndexType, StaticIndexChunkingStrategy
-
+import time
 # Загрузка переменных окружения
 load_dotenv()
 
@@ -33,6 +33,7 @@ for filename in os.listdir(data_directory):
             ttl_days=30,
             expiration_policy="SINCE_LAST_ACTIVE"
         )
+        time.sleep(1)
         uploaded_files.append(uploaded_file)
 
 # Создание типа векторного поискового индекса
@@ -44,7 +45,7 @@ index_type = VectorSearchIndexType(
     doc_embedder_uri=f"emb://{FOLDER_ID}/text-search-doc/rc",
     query_embedder_uri=f"emb://{FOLDER_ID}/text-search-query/rc"
 )
-
+time.sleep(2)
 # Создание поискового индекса с загруженными файлами
 operation = sdk.search_indexes.create_deferred(
     files=uploaded_files,
