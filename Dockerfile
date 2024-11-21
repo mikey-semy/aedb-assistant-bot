@@ -10,8 +10,5 @@ COPY . /app
 # Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Запускаем скрипт для создания индекса
-RUN python create_rag_index.py
-
 # Указываем команду для запуска приложения
 CMD ["python", "main.py"]
