@@ -16,17 +16,14 @@ BOT_NAME = os.getenv("BOT_NAME")
 async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик команды /start."""
     logger.debug(f"Вызвана команда /start от пользователя с ID: {update.effective_user.id}")
-    await update.message.reply_text(f"Привет! Я {BOT_NAME} - бот, который помогает находить информацию в документации")
+    await update.message.reply_text(f"Привет! Я {BOT_NAME} - бот, который консультирует по документации")
 
 async def help_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик команды /help."""
     logger.debug(f"Вызвана команда /help от пользователя с ID: {update.effective_user.id}")
     help_info = """Для получения ответа от AI-ассистента, просто напишите ваш вопрос в чат.
 Для отчистки истории сообщений, создайте новый тред командой: /new_thread.
-Генеративный ответ API поиска: /searchapi <запрос>
-Генеративный ответ API поиска с контекстом треда: /searchapi_contextual <запрос>
-
-Подробнее о боте: https://github.com/all-mute/yc-ai-tg-demo"""
+"""
     
     await update.message.reply_text(help_info)
 
