@@ -48,12 +48,12 @@ class S3Client:
                  region_name: str,
                  endpoint_url: str) -> None:
         self.s3=None
-        self.service_name='s3',
-        self.region_name=region_name,
-        self.endpoint_url=endpoint_url,
-        self.aws_access_key_id=aws_access_key_id,
+        self.service_name='s3'
+        self.region_name=region_name
+        self.endpoint_url=endpoint_url
+        self.aws_access_key_id=aws_access_key_id
         self.aws_secret_access_key=aws_secret_access_key
-    
+
     async def create_client(self):
         session = Session()
         self.s3 = await session.client(
@@ -272,12 +272,12 @@ class S3Client:
         except Exception as e:
             raise RuntimeError(f'Ошибка при создании бакета: {e}') from e
     
-    def s3_client_decorator(self):
+    def s3_client_decorator(self, aws_access_key_id, aws_secret_access_key, region_name, endpoint_url):
         """Декоратор для автоматического создания и закрытия S3Client."""
         def decorator(func):
             @wraps(func)
             async def wrapper(*args, **kwargs):
-                async with self as s3_client:
+                async with S3Client(aws_access_key_id, aws_secret_access_key, region_name, endpoint_url) as s3_client:
                     return await func(s3_client, *args, **kwargs)
             return wrapper
         return decorator
