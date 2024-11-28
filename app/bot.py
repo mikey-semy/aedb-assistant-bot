@@ -25,8 +25,8 @@ async def register_handlers(application: Application) -> None:
     commands = [
         BotCommand("start", "Начать работу с ботом"),
         BotCommand("help", "Помощь"),
-        BotCommand("searchapi", "Поиск через SearchAPI"),
-        BotCommand("searchapi_contextual", "Поиск через SearchAPI с контекстом треда"),
+        #BotCommand("searchapi", "Поиск через SearchAPI"),
+        #BotCommand("searchapi_contextual", "Поиск через SearchAPI с контекстом треда"),
         BotCommand("new_thread", "Создать новый поток")
     ]
     
@@ -39,8 +39,8 @@ async def register_handlers(application: Application) -> None:
     # Регистрация обработчиков команд
     application.add_handler(CommandHandler("start", start_handler))
     application.add_handler(CommandHandler("help", help_handler))
-    application.add_handler(CommandHandler("searchapi", searchapi_handler))
-    application.add_handler(CommandHandler("searchapi_contextual", searchapi_contextual_handler))
+    #application.add_handler(CommandHandler("searchapi", searchapi_handler))
+    #application.add_handler(CommandHandler("searchapi_contextual", searchapi_contextual_handler))
     application.add_handler(CommandHandler("new_thread", new_thread_handler))
     
     # Регистрация обработчика текстовых сообщений
