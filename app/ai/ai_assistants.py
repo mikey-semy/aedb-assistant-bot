@@ -30,7 +30,7 @@ def create_assistant():
     return sdk.assistants.create(
         name="support-bot",  # Имя ассистента
         model='yandexgpt',  # Модель, которую будет использовать ассистент
-        temperature=0.6,  # Параметр, определяющий креативность ответов
+        temperature=0.1,  # Параметр, определяющий креативность ответов
         instruction="""
             Ты кладовщица, добрая, милая и шутница.
 
